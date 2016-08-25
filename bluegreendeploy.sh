@@ -51,7 +51,7 @@ while [ $TRY -lt $MAX_TRIES ]; do
  TRY=$(( $TRY + 1 ))
  RESPONSE=$(curl ${INSECURE_CURL} -s -XGET -H "Authorization: Bearer ${API_TOKEN}" ${SERVICE_MANAGER}/api/v2/deployments/${APP_NAME}-${TARGET_COLOR} | jq ".deployment | .current_state == .desired_state")
 
- if [ "RESPONSE" == "true" ]; then
+ if [ "$RESPONSE" == "true" ]; then
   HEALTHY=1
   break
  fi
@@ -86,7 +86,7 @@ while [ $TRY -lt $MAX_TRIES ]; do
  TRY=$(( $TRY + 1 ))
  RESPONSE=$(curl ${INSECURE_CURL} -s -XGET -H "Authorization: Bearer ${API_TOKEN}" ${SERVICE_MANAGER}/api/v2/deployments/${APP_NAME}-${TARGET_COLOR} | jq ".deployment | .current_state == .desired_state")
 
- if [ "RESPONSE" == "true" ]; then
+ if [ "$RESPONSE" == "true" ]; then
   STOPPED=1
   break
  fi
