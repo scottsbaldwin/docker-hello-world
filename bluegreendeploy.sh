@@ -44,8 +44,8 @@ curl ${INSECURE_CURL} -s -XPUT -H "Authorization: Bearer ${API_TOKEN}" -d "apps/
 # Step 4: Wait for the target color to come online
 # ------------------------------------
 TRY=0
-MAX_TRIES=12
-WAIT_SECONDS=5
+MAX_TRIES=30
+WAIT_SECONDS=10
 HEALTHY=0
 while [ $TRY -lt $MAX_TRIES ]; do
  TRY=$(( $TRY + 1 ))
@@ -79,8 +79,8 @@ curl ${INSECURE_CURL} -s -XPOST -H "Authorization: Bearer ${API_TOKEN}" ${SERVIC
 
 # Make sure it has stopped
 TRY=0
-MAX_TRIES=12
-WAIT_SECONDS=5
+MAX_TRIES=30
+WAIT_SECONDS=10
 STOPPED=0
 while [ $TRY -lt $MAX_TRIES ]; do
  TRY=$(( $TRY + 1 ))
