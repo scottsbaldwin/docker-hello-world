@@ -22,7 +22,7 @@ POSTDATA=$(cat <<ENDOFTEMPLATE
     "helloworld": 3
   },
   "stack": {
-    "content": "version: 2\nservices:\n  app:\n    image: \"${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${TRAVIS_BUILD_NUMBER}\"\n    ports:\n      - ${EXPOSED_PORT}/tcp\n    environment:\n      - \"occs:availability=per-pool\"\n      - \"occs:scheduler=random\"\n",
+    "content": "version: 2\nservices:\n  app:\n    image: \"${DOCKER_REGISTRY}/${IMAGE_NAME}:${TRAVIS_BUILD_NUMBER}\"\n    ports:\n      - ${EXPOSED_PORT}/tcp\n    environment:\n      - \"occs:availability=per-pool\"\n      - \"occs:scheduler=random\"\n",
     "service_id": "app",
     "service_name": "${APP_FRIENDLY_NAME} ${TRAVIS_BUILD_NUMBER}",
     "subtype": "service"
