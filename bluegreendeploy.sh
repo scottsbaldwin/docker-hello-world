@@ -67,7 +67,7 @@ else
 fi
 
 # ------------------------------------
-# Step 5: Point load balancer at new services
+# Step 5: Point router at new services
 # ------------------------------------
 curl ${INSECURE_CURL} -s -XPUT -H "Authorization: Bearer ${API_TOKEN}" -d "${TARGET_COLOR}" ${SERVICE_MANAGER}/api/kv/blue-green/${APP_NAME}/current
 
