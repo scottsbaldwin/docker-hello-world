@@ -74,6 +74,13 @@ curl ${INSECURE_CURL} -s -XPUT -H "Authorization: Bearer ${API_TOKEN}" -d "${TAR
 # ------------------------------------
 # Step 6: Remove original deployment
 # ------------------------------------
+
+HTTP_CODE=$(curl ${INSECURE_CURL} -s -XGET -o /dev/null -w "%{http_code}" -H "Authorization: Bearer ${API_TOKEN}" ${SERVICE_MANAGER}/api/v2/deployments/${APP_NAME}-${ORIGINAL_COLOR})
+if [ $HTTP_CODE -eq 404 ]; then
+  echo "Tried to remove inactive deployment ${APP_NAME}-${ORIGINAL_COLOR} but it doesn't exist."
+  exit 0
+fi
+
 # First, the deployment must be stopped
 curl ${INSECURE_CURL} -s -XPOST -H "Authorization: Bearer ${API_TOKEN}" ${SERVICE_MANAGER}/api/v2/deployments/${APP_NAME}-${ORIGINAL_COLOR}/stop
 
