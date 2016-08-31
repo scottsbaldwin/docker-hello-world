@@ -7,4 +7,5 @@ install:
   - docker build -t ${DOCKER_REGISTRY}/${IMAGE_NAME}:${TRAVIS_BUILD_NUMBER} .
   - docker push ${DOCKER_REGISTRY}/${IMAGE_NAME}:${TRAVIS_BUILD_NUMBER}
 script:
-  - ./bluegreendeploy.sh
+#  - ./bluegreendeploy.sh
+  - ./rollingdeploy.sh
