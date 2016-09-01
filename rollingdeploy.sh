@@ -71,7 +71,7 @@ curl ${INSECURE_CURL} -s -XPUT -H "Authorization: Bearer ${API_TOKEN}" -d "apps/
 # ------------------------------------
 # Step 4: Remove original candidate deployment
 # ------------------------------------
-ORIGINAL_DEPLOY_ID=$(echo $ORIGINAL_CANDIDATE | sed -r 's/app\/app-(.+)-([0-9]+)\/containers/\1/')
+ORIGINAL_DEPLOY_ID=$(echo $ORIGINAL_CANDIDATE | sed -r 's/apps\/app-(.+)-([0-9]+)\/containers/\1/')
 
 HTTP_CODE=$(curl ${INSECURE_CURL} -s -XGET -o /dev/null -w "%{http_code}" -H "Authorization: Bearer ${API_TOKEN}" ${SERVICE_MANAGER}/api/v2/deployments/${ORIGINAL_DEPLOY_ID})
 if [ $HTTP_CODE -eq 404 ]; then
