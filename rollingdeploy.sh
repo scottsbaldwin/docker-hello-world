@@ -7,7 +7,7 @@ INSECURE_CURL="-k"
 # Step 1: Trigger deploy via API
 # ------------------------------------
 ORIGINAL_CANDIDATE=$(curl ${INSECURE_CURL} -s -XGET -H "Authorization: Bearer ${API_TOKEN}" ${SERVICE_MANAGER}/api/kv/rolling/${APP_NAME}/candidate/id?raw=true)
-TIMESTAMP=$(date +%Y%m%d-%H%m%S)
+TIMESTAMP=$(date +%Y%m%d-%H%M%S)
 [ -z "$SCALE_AMOUNT" ] && { SCALE_AMOUNT=1; }
 
 POSTDATA=$(cat <<ENDOFTEMPLATE
